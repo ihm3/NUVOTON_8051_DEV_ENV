@@ -1,0 +1,32 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "SDCC_BUILD",
+            "displayName": "Configure preset using toolchain file",
+            "description": "Sets generator, build dir and toolchain file for SDCC",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/../sdcc-toolchain.cmake",
+                "NULINK_PATH" : "C:/tools/Nuvoton Tools/NuLink Command Tool/NuLink.exe",
+                "TARGET_DEV": "n76"
+            }
+        }
+    ],
+
+    "buildPresets": [
+        {
+        "name": "Build",
+        "displayName": "Build",
+        "configurePreset": "SDCC_BUILD"
+        },
+        {
+        "name": "Run",
+        "displayName": "Run",
+        "configurePreset": "SDCC_BUILD",
+        "targets": "Upload"
+        }
+    ]
+}
